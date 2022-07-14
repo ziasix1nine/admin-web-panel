@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+      .highcharts-figure,
+      .highcharts-data-table table {
+        min-width: 360px;
+        max-width: 800px;
+        margin: 1em auto;
+      }
+
+      .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #EBEBEB;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+      }
+
+      .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table td,
+      .highcharts-data-table th,
+      .highcharts-data-table caption {
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table thead tr,
+      .highcharts-data-table tr:nth-child(even) {
+        background: #00AC65;
+      }
+
+      .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <!-- <a class="navbar-brand" href="index.html">Big POS</a> -->
+            <img src="assets/img/logo.png" class="img-rounded small mt-5 ml-5" width="100" height="100" alt="Big POS">
+            <div class="nav mt-5">
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div> Dashboard
+              </a>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-exchange-alt"></i>
+                </div> Transactions <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="transaction.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Transaction
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> E-commerce Transactions
+                  </a>
+                </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-chart-bar"></i>
+                </div> Reports <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-money-bill-wave"></i>
+                    </div> Sales <div class="sb-sidenav-collapse-arrow">
+                      <i class="fas fa-angle-down"></i>
+                    </div>
+                  </a>
+                  <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                    <nav class="sb-sidenav-menu-nested nav">
+                      <a class="nav-link" href="login.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Shift Report
+                      </a>
+                      <a class="nav-link" href="register.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Hourly Sales Report
+                      </a>
+                      <a class="nav-link" href="password.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Daily Sales Report
+                      </a>
+                      <a class="nav-link" href="password.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Today's Sales Report
+                      </a>
+                      <a class="nav-link" href="password.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Customer Report
+                      </a>
+                      <a class="nav-link" href="password.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Loyalty Point Report
+                      </a>
+                      <a class="nav-link" href="password.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Total Sales Report
+                      </a>
+                    </nav>
+                  </div>
+                  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-archive"></i>
+                    </div> Products <div class="sb-sidenav-collapse-arrow">
+                      <i class="fas fa-angle-down"></i>
+                    </div>
+                  </a>
+                  <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                    <nav class="sb-sidenav-menu-nested nav">
+                      <a class="nav-link" href="401.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Categories
+                      </a>
+                      <a class="nav-link" href="404.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Selling Fast
+                      </a>
+                      <a class="nav-link" href="500.html">
+                        <div class="sb-nav-link-icon">
+                          <i class="fas fa-caret-right"></i>
+                        </div> Stock Value
+                      </a>
+                    </nav>
+                  </div>
+                </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManageProducts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-box-open"></i>
+                </div> Manage Products <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseManageProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Categories
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Products
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Units
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Suppliers
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Price Catalogue
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Products
+                  </a>
+                </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManageStock" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-layer-group"></i>
+                  </i>
+                </div> Manage Stock <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseManageStock" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Urgent Stock
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Purchase Stock
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Stock Return
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Stock Take
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Stock Transafer
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Audit Trial
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Stock Request
+                  </a>
+                </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManageCustomer" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-users"></i>
+                </div> Manage Customers <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseManageCustomer" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Customer
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Customer Tags
+                  </a>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManageEmployee" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-user-tie"></i>
+                </div> Manage Employees <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseManageEmployee" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Employees
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> TimeSheet
+                  </a>
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Performance
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Employee Activity
+                  </a>
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Attendance
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Attendance Report
+                  </a>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-cog"></i>
+                </div> Settings <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseSettings" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Tax
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Branch
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Company Profile
+                  </a>
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Payment Options
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Subscription
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Shop Configuration
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Ipay Payment Type
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Ipad Layouts
+                  </a>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMSG" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-envelope"></i>
+                </div> Messages <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapseMSG" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Schedules
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Buy Credit
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Activity Logs
+                  </a>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePromotion" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-percent"></i>
+                </div> Promotions <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div class="collapse" id="collapsePromotion" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="layout-static.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Manage Promotions
+                  </a>
+                  <a class="nav-link" href="layout-sidenav-light.html">
+                    <div class="sb-nav-link-icon">
+                      <i class="fas fa-caret-right"></i>
+                    </div> Customer Display Banner
+                  </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <nav class="navbar bg-white" style="height: 65px">
+            <button class="btn btn-link btn-m order-1 order-lg-0" id="sidebarToggle" href="#!">
+              <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav navbar-right navbar-top-links">
+              <li class="dropdown notifications-menu open" style="margin-top: 14px;margin-right:20px">
+                <a href="#" data-toggle="dropdown" aria-expanded="true">
+                  <img src="assets/img/united-states.svg" alt="Language Flag" width="25px" height="25px">
+                </a>
+                <ul class="dropdown-menu shadow mb-4 " style="width:50px;">
+                  <ul class="menu p-3">
+                    <div class="p-2">
+                      <a href="/admin/setting/languageswitch?lang=en-US" data-method="post" lang="en-US">
+                        <img class="mr-2" src="assets/img/united-states.svg" alt="Language Flag" width="20px" height="20px"> English </a>
+                    </div>
+                    <div class="p-2">
+                      <a href="/admin/setting/languageswitch?lang=zh-CN" data-method="post" lang="zh-CN">
+                        <img class="mr-2" src="assets/img/Chinese.svg" alt="Language Flag" width="20px" height="20px"> Chinese Simplified </a>
+                    </div>
+                    <div class="p-2">
+                      <a href="/admin/setting/languageswitch?lang=id-ID" data-method="post" lang="id-ID">
+                        <img class="mr-2" src="assets/img/Indonesia.svg" alt="Language Flag" width="20px" height="20px"> Indonesia </a>
+                    </div>
+                    <div class="p-2">
+                      <a href="/admin/setting/languageswitch?lang=th-TH" data-method="post" lang="th-TH">
+                        <img class="mr-2" src="assets/img/Thailand.svg" alt="Language Flag" width="20px" height="20px"> Thailand </a>
+                    </div>
+                    <div class="p-2">
+                      <a href="/admin/setting/languageswitch?lang=vn-VN" data-method="post" lang="vn-VN">
+                        <img class="mr-2" src="assets/img/Vietnam.svg" alt="Language Flag" width="20px" height="20px"> Vietnam </a>
+                    </div>
+              </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li class="dropdown p-3 mr-5">
+              <a class="dropdown-toggle" style="background: 'green'" data-toggle="dropdown" href="#">
+                <i class="fas fa-user-circle mr-2"></i>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left shadow dropdown-user p-3" style="width: 10px">
+                <li class="mb-2">
+                  <a href="#">
+                    <i class="fa fa-user fa-fw mr-2"></i>Profile </a>
+                </li>
+                <li>
+                  <a href="login.html">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout </a>
+                </li>
+              </ul>
+            </li>
+            </ul>
+          </nav>
+          <div class="container-fluid">
+            <div class="row mt-5">
+              <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary  shadow-sm text-dark rounded mb-4" style="margin-top:-18px">
+                  <div class="card-body d-flex align-items-center justify-content-between" style="margin-left:-18px;margin-top:-15px">
+                    <div class="card-body h6">Total <h4 class="font-weight-semi-bold text-blue">Customer</h4>
+                    </div>
+                    <img src="assets/img/Customer.svg" width="60" height="60" style="margin-top:-18px" alt="Customers" />
+                  </div>
+                  <p class="card-body d-flex justify-content-center font-weight-bold display-4 text-blue" style="margin-top:-60px">209</p>
+                  <div class="card-footer d-flex justify-content-center" style="margin-top:-30px">
+                    <a class="h6 text-dark align-items-center mt-2 " href="#">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary  shadow-sm text-dark rounded mb-4" style="margin-top:-18px">
+                  <div class="card-body d-flex align-items-center justify-content-between" style="margin-left:-18px;margin-top:-15px">
+                    <div class="card-body h6">Today's <h4 class="font-weight-semi-bold text-yellow">Transaction</h4>
+                    </div>
+                    <img src="assets/img/Transaction.svg" width="65" height="65" style="margin-top:-18px" alt="Transaction" />
+                  </div>
+                  <p class="card-body d-flex justify-content-center font-weight-bold display-4 text-yellow" style="margin-top:-60px">110</p>
+                  <div class="card-footer d-flex justify-content-center" style="margin-top:-30px">
+                    <a class="h6 text-dark align-items-center mt-2" href="#">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary  shadow-sm text-dark rounded mb-4" style="margin-top:-18px">
+                  <div class="card-body d-flex align-items-center justify-content-between" style="margin-left:-18px;margin-top:-15px">
+                    <div class="card-body h6">Today's <h4 class="font-weight-semi-bold text-green">Sales</h4>
+                    </div>
+                    <img src="assets/img/Sales.svg" width="70" height="70" style="margin-top:-18px" alt="Transaction" />
+                  </div>
+                  <p class="card-body d-flex justify-content-center font-weight-bold display-4 text-green" style="margin-top:-60px">2,890</p>
+                  <div class="card-footer d-flex justify-content-center" style="margin-top:-30px">
+                    <a class="h6 text-dark align-items-center mt-2" href="#">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary  shadow-sm text-dark rounded mb-4" style="margin-top:-18px">
+                  <div class="card-body d-flex align-items-center justify-content-between" style="margin-left:-18px;margin-top:-15px">
+                    <div class="card-body h6">Transaction <h4 class="font-weight-semi-bold text-redish">Cancelled</h4>
+                    </div>
+                    <img src="assets/img/Cancelled.svg" width="65" height="65" style="margin-top:-18px" alt="Transaction" />
+                  </div>
+                  <p class="card-body d-flex justify-content-center font-weight-bold display-4 text-redish" style="margin-top:-60px">10</p>
+                  <div class="card-footer d-flex justify-content-center" style="margin-top:-30px">
+                    <a class="h6 text-dark align-items-center mt-2" href="#">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body shadow-sm bg-white ml-2 mr-2 rounded mb-4" id="container" style="height: 380px; width: 100%;"></div>
+              <!-- Charts -->
+              <div class="container-fluid shadow-sm bg-white ml-2 mr-2 rounded mb-4">
+                <div class="row">
+                  <div class="col-xl-12">
+                    <div class="card mb-4">
+                      <div class="card-header text-center justify-content-center">
+                        <!-- <i class="fas fa-chart-area mr-1"></i> -->
+                        <h4> Today's Sales Per Branch </h4>
+                        <!-- <h6 style="color: #6D6E72"> Current Month Vs Previous Month </h4> -->
+                      </div>
+                      <div class="card-body ">
+                        <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+              <div class="text-muted">Copyright &copy; MD Ziauddin 2022 </div>
+              <div>
+                <a href="#">Privacy Policy</a> &middot; <a href="#">Terms &amp; Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  </body>
+</html>
+
+
+ <script>
+         
+         Highcharts.chart('container', {
+
+  chart: {
+    style: {
+      fontFamily: 'SF Pro Display',
+      fontSize:'18',
+      color: "#f00"
+       }
+  },
+
+
+   title: {
+      style: {
+         color: '#F00',
+
+         font: 'SF Pro Display'
+      }
+   },
+
+  title: {
+    text: 'Total Cumulative Sales'
+   
+  },
+
+  subtitle: {
+    text: 'Current Month Vs Previous Month'
+  },
+
+
+
+  yAxis: {
+    title: {
+      text: 'Sales',
+
+    }
+  },
+
+  xAxis: {
+      
+      lineColor: '#000',
+      tickColor: '#000',
+      labels: {
+         style: {
+            
+            font: '11px Trebuchet MS, Verdana, sans-serif'
+         }
+      },
+      title: {
+         style: {
+            fontSize: '12px',
+            fontFamily: 'Trebuchet MS, Verdana, sans-serif'
+
+         }            
+      }
+   },
+
+  legend: {
+    layout: 'vertical',
+    align: 'right',
+    verticalAlign: 'middle'
+  },
+
+  plotOptions: {
+    series: {
+      label: {
+        connectorAllowed: false
+      },
+      pointStart: 1
+    }
+  },
+
+  series: [{
+    name: 'This Month',
+    data: [3934, 2503, 7177, 9658, 7031, 1931, 3733, 4135]
+  }, 
+
+  {
+    name: 'Last Month',
+    data: [4916, 4064, 9742, 9851, 2490, 3282, 3121, 4434,2916, 2064, 2742, 2981, 3490, 3282, 3121, 4434,2916, 2064, 2742, 2951, 3240, 1282, 8121, 434, 9742, 9851, 2490, 1282, 8121, 1434,1434]
+  }
+  ],
+
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 1400
+      },
+      chartOptions: {
+        legend: {
+          layout: 'horizontal',
+          align: 'center',
+          verticalAlign: 'bottom'
+        }
+      }
+    }]
+  }
+
+});
+     </script>
+
